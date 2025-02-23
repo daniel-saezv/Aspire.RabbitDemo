@@ -10,6 +10,8 @@ All the implementation is based on the .NET Aspire App template from Microsoft, 
 - **Aspire.RabbitDemo.AppHost**: Contains the app host configuration using .NET Aspire.
 - **Aspire.RabbitDemo.ServiceDefaults**: Contains shared service defaults and configurations.
 
+- ![Image](https://github.com/user-attachments/assets/0eaf23eb-755b-40d7-83a8-0bea9eba9d66)
+
 ## Prerequisites
 
 - .NET 8.0 SDK
