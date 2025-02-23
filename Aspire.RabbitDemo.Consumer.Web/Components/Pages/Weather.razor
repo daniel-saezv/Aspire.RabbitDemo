@@ -1,0 +1,64 @@
+﻿@page "/weather"
+@using Aspire.RabbitDemo.ServiceDefaults
+@rendermode InteractiveServer
+@attribute [StreamRendering(true)]
+@attribute [OutputCache(Duration = 5)]
+
+@inject WeatherDataService WeatherDataService
+
+<PageTitle>Weather</PageTitle>
+
+<h1>Weather</h1>
+
+<p>This component demonstrates showing data consumed from a RabbitMSQ.</p>
+
+@if (forecasts == null)
+{
+    <p><em>There's not any Weather Event.</em></p>
+    <p><em>Publish a Weather event through the publisher api to start viewing the weather data.</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th aria-label="Temperature in Celsius">Temp. (C)</th>
+                <th aria-label="Temperature in Farenheit">Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var forecast in forecasts)
+            {
+                <tr>
+                    <td>@forecast.Date.ToShortDateString()</td>
+                    <td>@forecast.TemperatureC</td>
+                    <td>@forecast.TemperatureF</td>
+                    <td>@forecast.Summary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private WeatherForecast[]? forecasts;
+
+    protected override void OnInitialized()
+    {
+        WeatherDataService.WeatherDataUpdated += OnWeatherDataUpdated;
+        forecasts = WeatherDataService.Forecasts;
+    }
+
+    private void OnWeatherDataUpdated(WeatherForecast[]? newForecasts)
+    {
+        forecasts = newForecasts;
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        WeatherDataService.WeatherDataUpdated -= OnWeatherDataUpdated;
+    }
+}
