@@ -10,7 +10,7 @@ All the implementation is based on the .NET Aspire App template from Microsoft, 
 - **Aspire.RabbitDemo.AppHost**: Contains the app host configuration using .NET Aspire.
 - **Aspire.RabbitDemo.ServiceDefaults**: Contains shared service defaults and configurations.
 
-![Image](https://github.com/user-attachments/assets/0f4f82c3-59ee-48d2-84f5-0b4600c464c2)
+![Image](https://github.com/user-attachments/assets/c28e2a82-0bc7-494a-8549-0940a27601c9)
 
 ## Prerequisites
 
