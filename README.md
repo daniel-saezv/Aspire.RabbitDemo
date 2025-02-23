@@ -1,15 +1,13 @@
 # Aspire RabbitMQ Weather Demo
 
-This repository contains a .NET Aspire project that demonstrates the integration of RabbitMQ with an ASP.NET Core Web API and a Blazor Web frontend. The project consists of the following components:
-
-- **RabbitMQ Container**: A RabbitMQ instance with the management plugin enabled.
-- **ASP.NET Core Web API**: An API with an endpoint that publishes weather events to RabbitMQ. If the request body is empty, it generates random weather data.
-- **Blazor Web Frontend**: A web frontend based on Razor that consumes RabbitMQ events and displays the weather data in a table.
+This repository contains a .NET Aspire project that demonstrates the integration of RabbitMQ with an ASP.NET Core Web API and a Blazor Web frontend.
+All the implementation is based on the .NET Aspire App template from Microsoft, which provides a structured approach to building distributed applications with .NET.
 
 ## Project Structure
 
 - **Aspire.RabbitDemo.Publisher.ApiService**: Contains the ASP.NET Core Web API that publishes weather events to RabbitMQ.
 - **Aspire.RabbitDemo.Consumer.Web**: Contains the Blazor Web frontend that consumes RabbitMQ events and displays the weather data.
+- **Aspire.RabbitDemo.AppHost**: Contains the app host configuration using .NET Aspire.
 - **Aspire.RabbitDemo.ServiceDefaults**: Contains shared service defaults and configurations.
 
 ## Prerequisites
@@ -42,12 +40,10 @@ The API is defined in the `Aspire.RabbitDemo.Publisher.ApiService` project. It i
 
 The frontend is defined in the `Aspire.RabbitDemo.Consumer.Web` project. It consumes RabbitMQ events and displays the weather data in a table.
 
-### .NET Aspire App Template
+### .NET Aspire App Host
 
-This project is based on the .NET Aspire App template from Microsoft, which provides a structured approach to building distributed applications with .NET.
+The app host is defined in the `Aspire.RabbitDemo.AppHost` project. It uses the .NET Aspire framework to configure and run the distributed application. The app host sets up the RabbitMQ container with the management plugin, the ASP.NET Core Web API, and the Blazor Web frontend. It ensures that the services are started in the correct order and that the necessary dependencies are available.
 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-
